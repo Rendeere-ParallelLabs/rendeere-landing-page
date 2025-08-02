@@ -1,0 +1,301 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+
+    /* Custom color palette egb */
+    --egb-1: 209 54% 15%;   /* #122845 */
+    --egb-2: 205 63% 30%;   /* #246084 */
+    --egb-3: 184 77% 34%;   /* #1f909c */
+    --egb-4: 164 59% 48%;   /* #54bba2 */
+    --egb-5: 155 64% 62%;   /* #70d6ad */
+    --egb-6: 115 68% 73%;   /* #a6e0a7 */
+    --egb-7: 164 38% 59%;   /* #89bfbd */
+    --egb-8: 207 36% 30%;   /* #4d798a */
+    --egb-9: 196 50% 45%;   /* invented, smooth between egb-7 and egb-8 */
+    --egb-10: 180 55% 52%;  /* invented, slightly lighter */
+    --egb-11: 163 58% 60%;  /* invented, lighter */
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .min-h-mobile-vid { min-height: 100% !important; }
+
+  .frosted-glass {
+    @apply bg-black/25 backdrop-blur-md border border-white/10;
+  }
+
+  .frosted-card {
+    @apply bg-black/40 backdrop-blur-lg border border-white/10 shadow-lg;
+  }
+
+  .gradient-text {
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, #54bba2, #89bfbd, #246084);
+    will-change: background-position;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  .engineering-animated-gradient-logo {
+    will-change: background-position;
+    animation: gradient-sweep 12s linear infinite;
+  }
+
+  .engineering-animated-gradient-text {
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(
+      -45deg,
+      hsl(var(--egb-1) / 0.8) 0%,
+      hsl(var(--egb-2) / 0.8) 10%,
+      hsl(var(--egb-3) / 0.8) 20%,
+      hsl(var(--egb-4) / 0.8) 30%,
+      hsl(var(--egb-5) / 0.8) 40%,
+      hsl(var(--egb-6) / 0.8) 50%,
+      hsl(var(--egb-7) / 0.8) 60%,
+      hsl(var(--egb-9) / 0.8) 70%,
+      hsl(var(--egb-10) / 0.8) 80%,
+      hsl(var(--egb-11) / 0.8) 90%,
+      hsl(var(--egb-8) / 0.8) 100%
+    );
+    animation: gradient-animation 6s ease infinite;
+    transition: background-image 0.8s ease;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #246084; /* Contraste mejorado */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1f909c; /* Contraste mejorado */
+}
+
+/* Custom scrollbar para navegadores no WebKit */
+.scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #246084 #0f0f0f;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* ---- Animation Logo. Fusion mask + gradient‑sweep with blend ---- */
+.engineering-animated-gradient-logo {
+  /* 1) Cutout silhouette */
+  mask-image: url('/images/logo/mask2_2.webp');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-image: url('/images/logo/mask2_2.webp');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  /* 2) Layer 0 = gradient-sweep (we animate it)
+  Layer 1 = internal logo mask.webp (fixed) */
+  background-image:
+    /* layer 0: rainbow by theme */
+    linear-gradient(
+      90deg,
+      /* Gaming stops (alpha .8) or Engineering stops depending on the class */
+      hsl(var(--egb-1) / 0.8) 0%,
+      hsl(var(--egb-2) / 0.8) 10%,
+      hsl(var(--egb-3) / 0.8) 20%,
+      hsl(var(--egb-4) / 0.8) 30%,
+      hsl(var(--egb-5) / 0.8) 40%,
+      hsl(var(--egb-6) / 0.8) 50%,
+      hsl(var(--egb-7) / 0.8) 60%,
+      hsl(var(--egb-9) / 0.8) 70%,
+      hsl(var(--egb-10) / 0.8) 80%,
+      hsl(var(--egb-11) / 0.8) 90%,
+      hsl(var(--egb-8) / 0.8) 100%
+    ),
+    /* layer 1: internal logo with original gradient */
+    url('/images/logo/logo.webp');
+
+  /* 3) Sizes and positions:
+  - very wide gradient for the sweep
+  - centered logo */
+  background-size: 300% 100%, contain;
+  background-position: 0% 0%, center center;
+  background-repeat: no-repeat, no-repeat;
+
+  /* 4) We merge both layers smoothly */
+  background-blend-mode: overlay, normal;
+
+  /* 5) We animate the layer 0 */
+  animation: gradient-sweep 12s linear infinite;
+}
+
+/* Engineering colors*/
+.engineering-animated-gradient-logo {
+  background-image:
+    linear-gradient(
+      90deg,
+      hsl(var(--egb-1) / 0.8) 0%,
+      hsl(var(--egb-2) / 0.8) 10%,
+      hsl(var(--egb-3) / 0.8) 20%,
+      hsl(var(--egb-4) / 0.8) 30%,
+      hsl(var(--egb-5) / 0.8) 40%,
+      hsl(var(--egb-6) / 0.8) 50%,
+      hsl(var(--egb-7) / 0.8) 60%,
+      hsl(var(--egb-9) / 0.8) 70%,
+      hsl(var(--egb-10) / 0.8) 80%,
+      hsl(var(--egb-11) / 0.8) 90%,
+      hsl(var(--egb-8) / 0.8) 100%
+    ),
+    url('/images/logo/logo.webp');
+}
+
+/* Keyframes: layer 0 (gradient) */
+@keyframes gradient-sweep {
+  0%   { background-position: 0%   0%, center center; }
+  50%  { background-position: 100% 0%, center center; }
+  100% { background-position: 0%   0%, center center; }
+}
+
+.engineering-animated-gradient-text {
+  background-size: 300% 300%;
+  background-image: linear-gradient(
+    -45deg,
+    hsl(var(--egb-1) / 0.8) 0%,
+    hsl(var(--egb-2) / 0.8) 10%,
+    hsl(var(--egb-3) / 0.8) 20%,
+    hsl(var(--egb-4) / 0.8) 30%,
+    hsl(var(--egb-5) / 0.8) 40%,
+    hsl(var(--egb-6) / 0.8) 50%,
+    hsl(var(--egb-7) / 0.8) 60%,
+    hsl(var(--egb-9) / 0.8) 70%,
+    hsl(var(--egb-10) / 0.8) 80%,
+    hsl(var(--egb-11) / 0.8) 90%,
+    hsl(var(--egb-8) / 0.8) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-animation 6s ease infinite;
+  transition: background-image 0.8s ease;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Accessibility: focus styles */
+:focus {
+  outline: 2px solid #1f909c;
+  outline-offset: 2px;
+}
+
